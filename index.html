@@ -9,6 +9,98 @@
 </head>
 
 <body>
+    <script>
+        function makeApiCall() {
+            var params = {
+                // The ID of the spreadsheet to update.
+                spreadsheetId: '1L8ndngE94P81fTPWoWrMB2-wKJMF5QeVaaZE6q6xfOk',
+
+                // The A1 notation of a range to search for a logical table of data.
+                // Values will be appended after the last row of the table.
+                range: 'Hoja 1',
+
+                // How the input data should be interpreted.
+                valueInputOption: 'RAW',
+
+
+                // How the input data should be interpreted.
+                //valueInputOption: 'a',  // TODO: Update placeholder value.
+
+                // How the input data should be inserted.
+                //insertDataOption: '',  // TODO: Update placeholder value.
+            };
+
+            var valueRangeBody = {
+                "values": [
+                    [
+                        222,
+                        777,
+                        7777,
+                        777
+                    ],
+                    [
+                        333,
+                        5555,
+                        5565
+                    ]
+                ]
+            };
+
+            var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+            request.then(function (response) {
+                // TODO: Change code below to process the `response` object:
+                console.log(response.result);
+            }, function (reason) {
+                console.error('error: ' + reason.result.error.message);
+            });
+        }
+
+        function initClient() {
+            var API_KEY = 'AIzaSyDarGVtPStQM7oDqaNPVWYdgoSDuDZW0i0';  // TODO: Update placeholder with desired API key.
+
+            var CLIENT_ID = '951911322593-d9llljdd2kcp2vhss7fffqn6kp8rc6ga.apps.googleusercontent.com';  // TODO: Update placeholder with desired client ID.
+
+            // TODO: Authorize using one of the following scopes:
+            //   'https://www.googleapis.com/auth/drive'
+            //   'https://www.googleapis.com/auth/drive.file'
+            //   'https://www.googleapis.com/auth/spreadsheets'
+            var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
+
+            gapi.client.init({
+                'apiKey': API_KEY,
+                'clientId': CLIENT_ID,
+                'scope': SCOPE,
+                'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+            }).then(function () {
+                gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
+                updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+            });
+        }
+
+        function handleClientLoad() {
+            gapi.load('client:auth2', initClient);
+        }
+
+        function updateSignInStatus(isSignedIn) {
+            if (isSignedIn) {
+                makeApiCall();
+            }
+        }
+
+        function handleSignInClick(event) {
+            gapi.auth2.getAuthInstance().signIn();
+        }
+
+        function handleSignOutClick(event) {
+            gapi.auth2.getAuthInstance().signOut();
+        }
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
+        onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+    <button id="signin-button" onclick="handleSignInClick()">Sign in</button>
+    <button id="signout-button" onclick="handleSignOutClick()">Sign out</button>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -73,11 +165,11 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Usuario de Epic Jugador 1</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="@usuario">
+                    <input type="text" class="form-control" id="usuarioJ1" placeholder="@usuario">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputState">Plataforma Jugador 1</label>
-                    <select id="inputState" class="form-control">
+                    <select id="plataformaJ1" class="form-control">
                         <option selected>PC</option>
                         <option>PS4</option>
                         <option>XBOX</option>
@@ -87,11 +179,11 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Usuario de Epic Jugador 2</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="@usuario">
+                    <input type="text" class="form-control" id="usuarioJ2" placeholder="@usuario">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputState">Plataforma Jugador 2</label>
-                    <select id="inputState" class="form-control">
+                    <select id="plataformaJ2" class="form-control">
                         <option selected>PC</option>
                         <option>PS4</option>
                         <option>XBOX</option>
@@ -100,20 +192,19 @@
             </div>
             <div class="form-group">
                 <label for="inputAddress">email</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="usuario@email.com">
+                <input type="email" class="form-control" id="email" placeholder="usuario@email.com">
             </div>
             <div class="form-group">
                 <label for="inputAddress2">Stream:</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="www.twitch.tv/juanmoreuy">
+                <input type="text" class="form-control" id="stream" placeholder="www.twitch.tv/juanmoreuy">
             </div>
             <div class="form-group">
                 <label for="inputAddress2">Departamento Jugador 1</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Montevideo">
+                <input type="text" class="form-control" id="departamentoJ1" placeholder="Montevideo">
             </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary" onclick="enviarFormulario()">Sign in</button>
         </form>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
