@@ -1,14 +1,14 @@
 const API_BASE = 'https://script.google.com/macros/s/AKfycbzlzNobHRxVJg_IKgG3lOYcg1KjucdXjyxidqq_RfHJV9Uqb6c/exec';
-const API_KEY = 'jYpdvrsGo86POPfAITngK//KPwBD/VSsQVXN5PJ2cPU=';
+// https://script.google.com/macros/s/AKfycbzlzNobHRxVJg_IKgG3lOYcg1KjucdXjyxidqq_RfHJV9Uqb6c/exec?key=jYpdvrsGo86POPfAITngKKPwBDVSsQVXN5PJ2cPU
+const API_KEY = 'jYpdvrsGo86POPfAITngKKPwBDVSsQVXN5PJ2cPU';
 
-const juanMoreContact = 'Error en el sitio, contactanos por instagram @Juanmoretorneos'
+const juanMoreContact = 'Error en el sitio, contactanos por instagram @Juanmoretorneos. Seguramente ya ingresaste estos datos.'
 // for future use
-function init() {
-    _writeInfo();
-}
+// function init() {}
+
 //instagramAcc, usr1, usr1Plat, usr2, usr2plat,
 //mail, stream, state
-function _writeInfo() {
+function writeInfo() {
     console.log('tring to write data');
 
     var usr1 = document.getElementById('usuarioJ1').value;
@@ -25,11 +25,12 @@ function _writeInfo() {
         .then((response) => response.json())
         .then((json) => {
             if (json.status !== 'success') {
-                _setNotice(json.message);
+                alert();
+                console.log(json.message);
             }
             console.log(json.message);
         }).catch((error) => {
-            _setNotice(juanMoreContact);
+            alertWarning(); // this shoulndt be a warning
         })
 }
 
@@ -37,7 +38,15 @@ function _buildApiUrl(usr1, usr1Plat, usr2, usr2Plat,
         instagram, email, stream, state){
     let url = API_BASE;
     url += '?key=' + API_KEY;
-
+    url += '&usr1=' + usr1;
+    url += '&usr1Plat=' + usr1Plat;
+    url += '&usr2=' + usr2;
+    url += '&usr2Plat=' + usr2Plat;
+    url += '&instagram=' + instagram;
+    url += '&email=' + email;
+    url += '&stream=' + stream;
+    url += '&state=' + state;
+    console.log(url);
     return url;
 }
 
@@ -59,6 +68,6 @@ bootstrap_alert.warning = function(message) {
                     '</button>' +
                 '</div>')
         }
-function alert() {
-    bootstrap_alert.warning('Your text bla bla');
+function alertWarning() {
+    bootstrap_alert.warning(juanMoreContact);
 }
