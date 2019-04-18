@@ -1,0 +1,10 @@
+#alert_placeholder {
+  position: fixed;
+  top: 5px; 
+  left:2%;
+  width: 96%;
+  margin-bottom: 0;
+  border-radius: 0;
+  z-index: 99999;
+}
+

@@ -29,6 +29,24 @@ function _buildApiUrl(){
     return url;
 }
 
+function setNoticeTest() {
+    _setNotice('test label');
+}
+
 function _setNotice (label) {
     page.notice.innerHTML = label;
+}
+
+bootstrap_alert = function() {}
+bootstrap_alert.warning = function(message) {
+            $('#alert_placeholder').html(
+                '<div class="alert alert-warning alert-dismissible fade show" role="alert">' +
+                    message +
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                        '<span aria-hidden="true">&times;</span>' +
+                    '</button>' +
+                '</div>')
+        }
+function alert() {
+    bootstrap_alert.warning('Your text bla bla');
 }
