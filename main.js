@@ -10,6 +10,7 @@ const app = function(){
 //instagramAcc, usr1, usr1Plat, usr2, usr2plat,
 //mail, stream, state
     function _writeInfo() {
+        console.log('tring to write data');
         fetch(_buildApiUrl())
             .then((response) => response.json())
             .then((json) => {
