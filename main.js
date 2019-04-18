@@ -17,7 +17,7 @@ const app = function(){
                 if (json.status !== 'success') {
                     _setNotice(json.message);
                 }
-                console.log('data should be written');
+                console.log(json.message);
             }).catch((error) => {
                 _setNotice(juanMoreContact);
             })
