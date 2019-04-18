@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-
+    <script src="main.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -110,15 +110,9 @@
                 <label for="inputAddress2">Departamento Jugador 1</label>
                 <input type="text" class="form-control" id="departamentoJ1" placeholder="Montevideo">
             </div>
-            <button type="submit" class="btn btn-primary" onclick="makeApiCall()">Sign in</button>
+            <button type="submit" class="btn btn-primary" onclick="app.init()">Sign in</button>
         </form>
     </div>
-    <script src="main.js"></script>
-    <script>
-        function pressButton(){
-            app.init;
-        }
-	</script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
