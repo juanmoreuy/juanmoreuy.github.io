@@ -10,7 +10,18 @@ function init() {
 //mail, stream, state
 function _writeInfo() {
     console.log('tring to write data');
-    fetch(_buildApiUrl())
+
+    var usr1 = document.getElementById('usuarioJ1').value;
+    var usr1Plat = document.getElementById('plataformaJ1').value;
+    var usr2 = document.getElementById('usuarioJ2').value;
+    var usr2Plat = document.getElementById('plataformaJ2').value;
+    var instagram = document.getElementById('instagram').value;
+    var email = document.getElementById('email').value;
+    var stream = document.getElementById('stream').value;
+    var state = document.getElementById('departamentoJ1').value;
+
+    fetch(_buildApiUrl(usr1, usr1Plat, usr2, usr2Plat, 
+            instagram, email, stream, state))
         .then((response) => response.json())
         .then((json) => {
             if (json.status !== 'success') {
@@ -22,7 +33,8 @@ function _writeInfo() {
         })
 }
 
-function _buildApiUrl(){
+function _buildApiUrl(usr1, usr1Plat, usr2, usr2Plat,
+        instagram, email, stream, state){
     let url = API_BASE;
     url += '?key=' + API_KEY;
 
