@@ -32,4 +32,8 @@ const app = function(){
     function _setNotice (label) {
 		page.notice.innerHTML = label;
     }
+
+    return {
+		init: init
+    };
 }();
