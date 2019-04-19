@@ -1,6 +1,6 @@
 #alert_placeholder {
   position: fixed;
-  top: 5px; 
+  top: 90%; 
   left:2%;
   width: 96%;
   margin-bottom: 0;
@@ -13,7 +13,7 @@
   width: 100%;
   margin-bottom: 0;
   border-radius: 0;
-  z-index: 99999;
+  z-index: 9999;
 }
 
 .jumbotron {

@@ -1,18 +1,15 @@
 const API_BASE = 'https://script.google.com/macros/s/AKfycbzlzNobHRxVJg_IKgG3lOYcg1KjucdXjyxidqq_RfHJV9Uqb6c/exec';
-// https://script.google.com/macros/s/AKfycbzlzNobHRxVJg_IKgG3lOYcg1KjucdXjyxidqq_RfHJV9Uqb6c/exec?key=jYpdvrsGo86POPfAITngKKPwBDVSsQVXN5PJ2cPU
 const API_KEY = 'jYpdvrsGo86POPfAITngKKPwBDVSsQVXN5PJ2cPU';
 
 const juanMoreContact = 'Error en los datos, contactanos por instagram @Juanmoretorneos. Seguramente ya los ingresaste.';
-
 const juanMoreContactDespido = 'Error en el sitio, contactanos por instagram @Juanmoretorneos y pedi que despidan al ingeniero';
+const juanMoreSuccess =  'Inscripccion realizada con exito, nos vemos en las canchas y suerte!';
 // for future use
 // function init() {}
 
 //instagramAcc, usr1, usr1Plat, usr2, usr2plat,
 //mail, stream, state
 function writeInfo() {
-    console.log('tring to write data');
-
     var usr1 = document.getElementById('usuarioJ1').value;
     var usr1Plat = document.getElementById('plataformaJ1').value;
     var usr2 = document.getElementById('usuarioJ2').value;
@@ -22,24 +19,22 @@ function writeInfo() {
     var stream = document.getElementById('stream').value;
     var state = document.getElementById('departamentoJ1').value;
 
-    if (usr1 != "" && usr2 != "" && instagram != "" && email != "")
-    {
+    if (usr1 != "" && usr2 != "" && instagram != "" && email != "") {
         fetch(_buildApiUrl(usr1, usr1Plat, usr2, usr2Plat, 
                 instagram, email, stream, state))
             .then((response) => response.json())
             .then((json) => {
                 if (json.status !== 'success') {
                     alertWarning(); // if API fails
-                    console.log(json.message);
+                } else {
+                    alertSuccess();
                 }
-                console.log(json.message);
-                location.href = 'form-success.html';
             }).catch((error) => {
                 alertDanger(); // if fecth API fails
             })
-    } 
-    else
-        location.href = 'form-error.html';
+    } else {
+        bootstrap_alert.warning('Asegurate de llenar los campos obligatorios marcados con un *');
+    }
 }
 
 function _buildApiUrl(usr1, usr1Plat, usr2, usr2Plat,
@@ -54,7 +49,6 @@ function _buildApiUrl(usr1, usr1Plat, usr2, usr2Plat,
     url += '&email=' + email;
     url += '&stream=' + stream;
     url += '&state=' + state;
-    console.log(url);
     return url;
 }
 
@@ -86,10 +80,24 @@ bootstrap_alert.danger = function(message) {
                     '</button>' +
                 '</div>')
         }
+bootstrap_alert.success = function(message) {
+            $('#alert_placeholder').html(
+                '<div class="alert alert-success alert-dismissible fade show" role="alert">' +
+                    message +
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                        '<span aria-hidden="true">&times;</span>' +
+                    '</button>' +
+                '</div>')
+        }
+
 function alertWarning() {
     bootstrap_alert.warning(juanMoreContact);
 }
 
 function alertDanger() {
     bootstrap_alert.danger(juanMoreContactDespido);
+}
+
+function alertSuccess() {
+    bootstrap_alert.success(juanMoreSuccess);
 }
