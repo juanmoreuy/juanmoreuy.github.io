@@ -31,13 +31,12 @@ function writeInfo() {
                 if (json.status !== 'success') {
                     alertWarning(); // if API fails
                     console.log(json.message);
-                    location.href = 'form-success.html';
                 }
                 console.log(json.message);
             }).catch((error) => {
                 alertDanger(); // if fecth API fails
-                location.href = 'form-error.html';
             })
+        location.href = 'form-success.html';
     } 
     else
         location.href = 'form-error.html';
