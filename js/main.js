@@ -33,10 +33,10 @@ function writeInfo() {
                     console.log(json.message);
                 }
                 console.log(json.message);
+                location.href = 'form-success.html';
             }).catch((error) => {
                 alertDanger(); // if fecth API fails
             })
-        location.href = 'form-success.html';
     } 
     else
         location.href = 'form-error.html';
