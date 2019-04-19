@@ -22,42 +22,25 @@ function writeInfo() {
     var stream = document.getElementById('stream').value;
     var state = document.getElementById('departamentoJ1').value;
 
-    $(document).ready(function () {
-    $("#form").validate({
-        rules: {
-            "usr1": {
-                required: true
-            },
-            "email": {
-                required: true,
-                email: true
-            }
-        },
-        messages: {
-            "usr1": {
-                required: "Please, enter a name"
-            },
-            "email": {
-                required: "Please, enter an email",
-                email: "Email is invalid"
-            }
-        },
-    });
-
-});
-    
-    fetch(_buildApiUrl(usr1, usr1Plat, usr2, usr2Plat, 
-            instagram, email, stream, state))
-        .then((response) => response.json())
-        .then((json) => {
-            if (json.status !== 'success') {
-                alertWarning(); // if API fails
+    if (usr1 != "" && usr2 != "" && instagram != "" && email != "")
+    {
+        fetch(_buildApiUrl(usr1, usr1Plat, usr2, usr2Plat, 
+                instagram, email, stream, state))
+            .then((response) => response.json())
+            .then((json) => {
+                if (json.status !== 'success') {
+                    alertWarning(); // if API fails
+                    console.log(json.message);
+                    location.href = 'form-success.html';
+                }
                 console.log(json.message);
-            }
-            console.log(json.message);
-        }).catch((error) => {
-            alertDanger(); // if fecth API fails
-        })
+            }).catch((error) => {
+                alertDanger(); // if fecth API fails
+                location.href = 'form-error.html';
+            })
+    } 
+    else
+        location.href = 'form-error.html';
 }
 
 function _buildApiUrl(usr1, usr1Plat, usr2, usr2Plat,
