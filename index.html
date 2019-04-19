@@ -19,9 +19,9 @@
 </head>
 
 <body>
-    <div id = "alert_placeholder"></div>
+    <div id="alert_placeholder"></div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">JuanMore </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,42 +29,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#inscripccion">Inscripcción a torneo <span
+                            class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://www.instagram.com/juanmoretorneos/">Instagram </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://www.twitch.tv/juanmoreuy">Twitch </a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div>
     </nav>
-
-
+    <br/>
+    <br/>
     <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-            featured content or information.</p>
+        <h1 class="display-3">Juan More Torneos</h1>
+        <p class="lead">Enterate de todas nuestras noticias en nuestro instagram.</p>
         <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" role="button" onclick="alertWarning()">Learn more</a>
+        <p>Queres participar de nuestro torneo? Llena el formulario abajo</p>
     </div>
 
     <!-- 
@@ -79,54 +62,68 @@
         
     -->
     <div class="container">
-        <form>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Usuario de Epic Jugador 1</label>
-                    <input type="text" class="form-control" id="usuarioJ1" placeholder="@usuario">
+
+        <div class="form-class">
+            <h4 class="display-4" id="inscripccion">
+                Formulario de inscripcción
+            </h4>
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Usuario de Epic Jugador 1</label>
+                        <input type="text" class="form-control" id="usuarioJ1" placeholder="@usuario">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Plataforma Jugador 1</label>
+                        <select id="plataformaJ1" class="form-control">
+                            <option selected>PC</option>
+                            <option>PS4</option>
+                            <option>XBOX</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="inputState">Plataforma Jugador 1</label>
-                    <select id="plataformaJ1" class="form-control">
-                        <option selected>PC</option>
-                        <option>PS4</option>
-                        <option>XBOX</option>
-                    </select>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Usuario de Epic Jugador 2</label>
+                        <input type="text" class="form-control" id="usuarioJ2" placeholder="@usuario">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Plataforma Jugador 2</label>
+                        <select id="plataformaJ2" class="form-control">
+                            <option selected>PC</option>
+                            <option>PS4</option>
+                            <option>XBOX</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Usuario de Epic Jugador 2</label>
-                    <input type="text" class="form-control" id="usuarioJ2" placeholder="@usuario">
+                <div class="form-group">
+                    <label for="inputAddress">Instagram de contacto</label>
+                    <input type="text" class="form-control" id="instagram" placeholder="@insta">
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="inputState">Plataforma Jugador 2</label>
-                    <select id="plataformaJ2" class="form-control">
-                        <option selected>PC</option>
-                        <option>PS4</option>
-                        <option>XBOX</option>
-                    </select>
+                <div class="form-group">
+                    <label for="inputAddress">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="usuario@email.com">
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="inputAddress">Instagram de contacto</label>
-                <input type="email" class="form-control" id="instagram" placeholder="@insta">
-            </div>
-            <div class="form-group">
-                <label for="inputAddress">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="usuario@email.com">
-            </div>
-            <div class="form-group">
-                <label for="inputAddress2">Stream:</label>
-                <input type="text" class="form-control" id="stream" placeholder="www.twitch.tv/juanmoreuy">
-            </div>
-            <div class="form-group">
-                <label for="inputAddress2">Departamento Jugador 1</label>
-                <input type="text" class="form-control" id="departamentoJ1" placeholder="Montevideo">
-            </div>
-            <button type="button" class="btn btn-primary" onclick="writeInfo()">Sign in</button>
-        </form>
+                <div class="form-group">
+                    <label for="inputAddress2">Stream:</label>
+                    <input type="text" class="form-control" id="stream" placeholder="www.twitch.tv/juanmoreuy">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">Departamento Jugador 1</label>
+                    <input type="text" class="form-control" id="departamentoJ1" placeholder="Montevideo">
+                </div>
+                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="writeInfo()">
+                    Inscribirse
+                </button>
+            </form>
+        </div>
+        <hr class="my-4">
     </div>
+    <footer>
+        <p class="font-weight-light text-center">Juan More Torneos © 2019 |
+            Mail de contacto: <a href="juanmoreuy@gmail.com">
+                juanmoreuy@gmail.com</a>.</p>
+    </footer>
 </body>
 
 </html>

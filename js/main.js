@@ -2,7 +2,9 @@ const API_BASE = 'https://script.google.com/macros/s/AKfycbzlzNobHRxVJg_IKgG3lOY
 // https://script.google.com/macros/s/AKfycbzlzNobHRxVJg_IKgG3lOYcg1KjucdXjyxidqq_RfHJV9Uqb6c/exec?key=jYpdvrsGo86POPfAITngKKPwBDVSsQVXN5PJ2cPU
 const API_KEY = 'jYpdvrsGo86POPfAITngKKPwBDVSsQVXN5PJ2cPU';
 
-const juanMoreContact = 'Error en el sitio, contactanos por instagram @Juanmoretorneos. Seguramente ya ingresaste estos datos.'
+const juanMoreContact = 'Error en los datos, contactanos por instagram @Juanmoretorneos. Seguramente ya los ingresaste.';
+
+const juanMoreContactDespido = 'Error en el sitio, contactanos por instagram @Juanmoretorneos y pedi que despidan al ingeniero';
 // for future use
 // function init() {}
 
@@ -25,12 +27,12 @@ function writeInfo() {
         .then((response) => response.json())
         .then((json) => {
             if (json.status !== 'success') {
-                alert();
+                alertWarning(); // if API fails
                 console.log(json.message);
             }
             console.log(json.message);
         }).catch((error) => {
-            alertWarning(); // this shoulndt be a warning
+            alertDanger(); // if fecth API fails
         })
 }
 
@@ -68,6 +70,20 @@ bootstrap_alert.warning = function(message) {
                     '</button>' +
                 '</div>')
         }
+
+bootstrap_alert.danger = function(message) {
+            $('#alert_placeholder').html(
+                '<div class="alert alert-danger alert-dismissible fade show" role="alert">' +
+                    message +
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                        '<span aria-hidden="true">&times;</span>' +
+                    '</button>' +
+                '</div>')
+        }
 function alertWarning() {
     bootstrap_alert.warning(juanMoreContact);
+}
+
+function alertDanger() {
+    bootstrap_alert.danger(juanMoreContactDespido);
 }

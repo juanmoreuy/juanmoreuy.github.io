@@ -8,3 +8,35 @@
   z-index: 99999;
 }
 
+.navbar {
+  position: fixed;
+  width: 100%;
+  margin-bottom: 0;
+  border-radius: 0;
+  z-index: 99999;
+}
+
+.jumbotron {
+  background-image: url(https://cdn.discordapp.com/attachments/439825470075305995/566042165646458896/JUAN_MORE.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 100;
+}
+
+.form-class {
+  padding: 1%;
+  border: 1px solid rgb(165, 125, 202);
+}
+
+.btn-primary {
+  background-color: rgb(165, 125, 202) !important;
+  border: 0px !important;
+}
+
+.btn-primary:hover{
+  background-color: rgb(123, 85, 158) !important;
+}
+
+.container {
+  padding-bottom: 1%;
+}
