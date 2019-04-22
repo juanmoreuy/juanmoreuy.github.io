@@ -37,6 +37,6 @@
   background-color: rgb(123, 85, 158) !important;
 }
 
-.container {
-  padding-bottom: 1%;
+.container-fluid {
+  padding: 1%;
 }
