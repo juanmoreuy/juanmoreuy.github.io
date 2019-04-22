@@ -27,7 +27,7 @@ function writeInfo() {
                 if (json.status !== 'success') {
                     alertWarning(); // if API fails
                 } else {
-                    alertSuccess();
+                    location.href = 'form-success.html';
                 }
             }).catch((error) => {
                 alertDanger(); // if fecth API fails
