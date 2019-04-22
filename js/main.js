@@ -33,7 +33,7 @@ function writeInfo() {
                 alertDanger(); // if fecth API fails
             })
     } else {
-        bootstrap_alert.warning('Asegurate de llenar los campos obligatorios marcados con un *');
+        bootstrap_alert.warning('Asegurate de llenar los campos obligatorios(*)');
     }
 }
 
